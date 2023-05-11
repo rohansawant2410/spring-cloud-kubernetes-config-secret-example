@@ -1,0 +1,27 @@
+management:
+  endpoint:
+    restart:
+      enabled: true
+spring:
+  application:
+    name: config-app
+  cloud:
+    kubernetes:
+      config:
+        namespace: hello-openshift
+        sources:
+          - name: config-app
+          - name: config-common
+      secrets:
+        namespace: hello-openshift
+        sources:
+         - name: dbpasswd
+         - name: kfpasswd
+        #paths: /etc/secrets/dbpasswd,/etc/secrets/kfpasswd
+        enableApi: true
+      reload:
+        enabled: true
+        mode: polling
+        strategy: refresh
+        period: 5s
+

@@ -1,0 +1,13 @@
+logging.level.org.springframework.cloud.kubernetes: DEBUG
+spring.application.name: config-app
+management:
+  endpoint:
+    restart:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: info,refresh,keepalive,health
+
+
+
